@@ -280,6 +280,10 @@ export default class ModalPortal extends Component {
     this.shouldClose = false;
   };
 
+  handleContentOnTouchStart = () => {
+    this.shouldClose = false;
+  };
+
   handleContentOnMouseDown = () => {
     this.shouldClose = false;
   };
@@ -333,6 +337,7 @@ export default class ModalPortal extends Component {
         className={this.buildClassName("overlay", overlayClassName)}
         style={{ ...overlayStyles, ...this.props.style.overlay }}
         onClick={this.handleOverlayOnClick}
+        onTouchStart={this.handleOverlayOnClick}
         onMouseDown={this.handleOverlayOnMouseDown}
       >
         <div
@@ -344,6 +349,7 @@ export default class ModalPortal extends Component {
           onMouseDown={this.handleContentOnMouseDown}
           onMouseUp={this.handleContentOnMouseUp}
           onClick={this.handleContentOnClick}
+          onTouchStart={this.handleContentOnTouchStart}
           role={this.props.role}
           aria-label={this.props.contentLabel}
           {...this.attributesFromObject("aria", this.props.aria || {})}
